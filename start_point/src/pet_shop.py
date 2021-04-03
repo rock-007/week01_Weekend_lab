@@ -35,6 +35,9 @@ def find_pet_by_name(pet_shop,display_name):
         
         if(each_pet["name"]==display_name):
             return each_pet
+        else:
+            print("The pet is not found")
+            
 
 def remove_pet_by_name(pet_shop, remove_name):
     for each_pet in pet_shop["pets"]:
@@ -59,6 +62,31 @@ def get_customer_pet_count(customer):
 def add_pet_to_customer(customer, new_pet):
     return customer["pets"].append(new_pet)
     
+def customer_can_afford_pet(customer, new_pet):
+    if(customer["cash"]>=new_pet["price"]):
+        return True
+    else:
+        return False
+        
+def sell_pet_to_customer(pet_shop,pet,customer):
+    print("lll")
+    print(pet)
+    for each_pet in pet_shop["pets"]:
+        if(pet !=None and each_pet["name"]==pet["name"] and customer["cash"]>=each_pet["price"]):
+            customer["pets"].append(0)
+            customer["pets"][0] = (customer["pets"][0]) +1
+            customer["cash"] = customer["cash"]-  pet["price"]
+            pet_shop["admin"]["total_cash"]= pet_shop["admin"]["total_cash"]+ pet["price"]
+            pet_shop["admin"]["pets_sold"] = pet_shop["admin"]["pets_sold"] +1
+
+
+        
+
+
+
+  
+
+
 
 
 
